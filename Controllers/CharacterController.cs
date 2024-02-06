@@ -17,14 +17,12 @@ namespace backendvjezba.Models
         private readonly ICharacterService _characterService;
 
 
-        // this is how we inject CharacterService intop controller
         public CharacterController(ICharacterService characterService)
         {
             _characterService = characterService;
         }
 
 
-        // get metohod  
         [HttpGet("GetAll")]
         public async Task<ActionResult<ServiceResponse<List<GetCharacterDto>>>> Get()
         {
@@ -33,7 +31,6 @@ namespace backendvjezba.Models
         }
 
 
-        // paramtear mora biti dodat  unutar {}
         [HttpGet("{id}")]
         public async Task<ActionResult<ServiceResponse<GetCharacterDto>>> GetSingle(int id)
         {

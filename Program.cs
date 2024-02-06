@@ -1,13 +1,16 @@
 
 global using backendvjezba.Models;
 global using backendvjezba.Services.CharacterService;
+global using Microsoft.EntityFrameworkCore;
+global using backendvjezba.Data;
+
 // global using backendvjezba.Dtos;
 using backendvjezba.Dtos.Character;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
